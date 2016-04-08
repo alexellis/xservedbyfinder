@@ -13,6 +13,7 @@ async.until(function() {
         console.log("" + servedBy);
         found.push(servedBy);
       }
+      process.stdout.write(".");
       cb();
     });
 });

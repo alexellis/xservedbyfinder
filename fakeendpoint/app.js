@@ -12,11 +12,17 @@ var nodes = [
 ];
 
 var server = http.createServer(function(req, res) {
-   var nodeNumber = Math.floor((Math.random() * nodes.length-1) + 0);
-   var node = nodes[nodeNumber];
+ var delay = Math.floor((Math.random() * 30) + 30)
+ console.log(delay);
+ setTimeout(function() {
+   var nodeNumber = Math.floor((Math.random() * nodes.length) + 1);
+   var node = nodes[nodeNumber-1];
+
+   res.setHeader('Content-Type', 'text/html');
    res.setHeader("X-Served-By", "Raspberry Pi " + node);
-   res.write("<html>Here is the blog.</html>\n");
-   res.end()
+   res.writeHead(200);
+   res.end("<html>Here is the blog.</html>\n");
+  }, delay);
 });
 
 server.listen(3000);

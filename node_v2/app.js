@@ -1,5 +1,7 @@
+/*
 # Also times each request
 # Stops after given amount of requests
+*/
 
 var request = require('request');
 var async = require('async');
@@ -9,6 +11,9 @@ var times = {};
 
 var maxCalls=process.argv[2] && Number(process.argv[2]) || 10;
 var totalCalls = 0;
+
+var url = "https://www.raspberrypi.org/blog/the-little-computer-that-could/";
+//var url = "http://localhost:3000/";
 
 function tally() {
   console.log("\nTallying data");
@@ -33,7 +38,7 @@ async.until(function() {
 }, function(cb) {
   var ticksStart = new Date().getTime();
   
-request.head("https://www.raspberrypi.org/blog/the-little-computer-that-could/",
+request.head(url,
     function(err, res, body) {
       var ticksEnd = new Date().getTime();
 
