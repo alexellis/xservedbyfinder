@@ -5,8 +5,8 @@ import "fmt"
 import "os"
 import "strconv"
 
-func getservedby() (header string) {
-    resp, err := http.Get("http://localhost:3000/")
+func getservedby(url string) (header string) {
+    resp, err := http.Get(url)
     header = ""
     if err != nil {
       fmt.Printf("-")
@@ -34,9 +34,11 @@ func main() {
     }
     fmt.Printf("Reqs: %v\n", reqs)
 
+    url := "http://localhost:3000/"
+
     found := make(map[string]int)
     for i:=0; i< reqs; i++ {
-        code := getservedby()
+        code := getservedby(url)
         if _, exists := found[code]; !exists {
             found[code]=0
         }
