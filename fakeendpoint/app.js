@@ -12,8 +12,8 @@ var nodes = [
 ];
 
 var server = http.createServer(function(req, res) {
- var delay = Math.floor((Math.random() * 30) + 30)
- console.log(delay);
+ var delay = Math.floor((Math.random() * 35) + 30)
+ process.stdout.write(".");
  setTimeout(function() {
    var nodeNumber = Math.floor((Math.random() * nodes.length) + 1);
    var node = nodes[nodeNumber-1];
