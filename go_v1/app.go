@@ -35,7 +35,10 @@ func main() {
     fmt.Printf("Reqs: %v\n", reqs)
 
     url := "http://localhost:3000/"
-
+    if len(os.Getenv("URL")) >0 {
+        url = os.Getenv("URL")
+    }
+    fmt.Printf("Using url: %v", url)
     found := make(map[string]int)
     for i:=0; i< reqs; i++ {
         code := getservedby(url)
