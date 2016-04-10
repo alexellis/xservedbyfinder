@@ -9,4 +9,11 @@ go_v2 $ go build xservedby.go
 ##Running it
 ````sh
 go_v2 $ ./xservedby -h
+      Usage of ./xservedby:
+        -c int
+              Number of HTTP requests to make concurrently (default 8)
+        -r int
+              Maximum number of requests to make (default 100)
+        -url string
+              Url to request (default "http://localhost:3000/")
 ````
