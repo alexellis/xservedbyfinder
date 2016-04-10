@@ -7,7 +7,7 @@ ENV GOPATH /gopath
 ENV GOBIN /gopath/bin
 ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
 
-ENV URL http://192.168.64.1:3000
+ENV URL http://www.raspberrypi.org/
 
 ADD app.go /gopath/
 WORKDIR /gopath/
