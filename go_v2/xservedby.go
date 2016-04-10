@@ -34,28 +34,36 @@ import (
 
 var url string
 var requestLimit int
+var concurrentTasks int
 
 const (
 	defaultUrl    = "http://localhost:3000/"
 	defaultMaxReq = 100
+	defaultConcurrentTasks = 8
 	headerName    = "X-Served-By"
 )
 
 func init() {
 	flag.StringVar(&url, "url", defaultUrl, "Url to request")
 	flag.IntVar(&requestLimit, "r", defaultMaxReq, "Maximum number of requests to make")
+	flag.IntVar(&concurrentTasks, "c", defaultConcurrentTasks, "Number of HTTP requests to make concurrently")
 }
 
 func main() {
 	flag.Parse()
 
+	work := make(chan int)
 	hexOut := make(chan string)
 	go printUnique(hexOut)
 	var wg sync.WaitGroup
-	wg.Add(requestLimit)
-	for i := 0; i < requestLimit; i++ {
-		go getHeader(hexOut, &wg)
+	wg.Add(concurrentTasks)
+	for i := 0; i < concurrentTasks; i++ {
+		go requestWorker(hexOut, work, &wg)
 	}
+	for i := 0; i < requestLimit; i++ {
+		work <- 1
+	}
+	close(work)
 	wg.Wait()
 	close(hexOut)
 }
@@ -70,8 +78,14 @@ func printUnique(hexOut <-chan string) {
 	}
 }
 
-func getHeader(hexOut chan<- string, wg *sync.WaitGroup) {
+func requestWorker(hexOut chan<- string, work <-chan int, wg *sync.WaitGroup) {
 	defer wg.Done()
+	for _ = range work {
+		getHeader(hexOut)
+	}
+}
+
+func getHeader(hexOut chan<- string) {
 	resp, err := http.Head(url)
 	if err != nil {
 		log.Fatalln(err)
