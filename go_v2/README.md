@@ -1,3 +1,7 @@
+<!---
+    Copyright (c) 2016 Mark Roberts
+    Released under the MIT license. See the file LICENSE for details.
+--->
 #Go
 This is an attempt at an idiomatic Go implementation. It makes a number of HTTP HEAD requests concurrently, feeding the results back through a channel to a function that finds and prints the unique header values as they are found.
 
