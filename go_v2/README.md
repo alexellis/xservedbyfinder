@@ -21,3 +21,13 @@ go_v2 $ ./xservedby -h
         -url string
               Url to request (default "http://localhost:3000/")
 ````
+
+##Running through Docker
+
+Building and running, where the *fakeendpoint* is running i.e. on 192.168.0.100.
+
+````
+docker build -t go_v2 .
+docker run go_v2 -c 8 -r 100 -url http://192.168.0.100
+````
+
