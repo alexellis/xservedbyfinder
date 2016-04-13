@@ -10,13 +10,14 @@ public class App {
 		URL url = null;
 		HttpURLConnection conn = null;
 		HashSet<String> nodes = new HashSet<String>();
-		
-		String path = "https://www.raspberrypi.org/blog/the-little-computer-that-could/";
 		int n = 50;
 		
+		String path = System.getenv("targetUrl");
+		if(path == null) {
+			path = "https://www.raspberrypi.org/blog/the-little-computer-that-could/";
+		}
+		
 		try {
-			
-			System.out.println("Calling " + path + " " + n + " times");
 			
 			for(int i=0; i<n; i++) {
 				
@@ -40,12 +41,14 @@ public class App {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("Exception: " + e);
+			//
 		} finally {
 			conn = null;
 		}
 		
-		System.out.println("Nodes : " + nodes);
+		for(String node: nodes) {
+			System.out.println(node);
+		}
 		
 	}
 
