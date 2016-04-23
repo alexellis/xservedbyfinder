@@ -1,6 +1,6 @@
 target: fetch1 fetch2 fetch3 fetch4 final
 final:
-	./print_results.sh
+	./print_results.sh && rm *.txt
 fetch1:
 	./curl25times.sh > out1.txt
 fetch2:
