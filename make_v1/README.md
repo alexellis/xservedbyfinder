@@ -6,8 +6,6 @@ The format is `make -j numCores`, i.e. `make -j 4` on a quad-core or dual-core w
 
 Each core will run `curl25times.sh ` curl 25 times using 25 processes then pipe the results into a number of text files, after running 100 `curl` processes the files are combined to print the results `print_results.sh`.
 
-Limitation: this can only be run with `-j` = `1, 2 or 4` due to limitations in my Makefile knowledge.
-
 **The example**
 
 For the example I hard-coded the delay in the *fakeendpoint* to 50ms to make the benchmark more repeatable.
