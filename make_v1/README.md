@@ -55,3 +55,11 @@ real	0m1.907s
 user	0m0.747s
 sys	0m0.724s
 ```
+
+**Running through Docker**
+
+```
+docker build -t make_v1 .
+docker run -e TARGET_URL=http://192.168.64.1:3000 make_v1
+```
+
