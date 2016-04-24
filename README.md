@@ -12,7 +12,7 @@ You will find a few solutions in Node.js, Bash and Go. This is an open invitatio
 
 * Fork the repository
 * Push up your changes into a new folder with a brief README.md file
-* Ideally push a Dockerfile so that we can test the changes easily and include them in a CI build.
+* Ideally push a Dockerfile so that we can test the changes easily and include them in an automated build.
 * Raise a pull request (PR) and I will merge it.
 
 This is a chance to contribute to an open-source project without having to over-commit your time or worry about pushing a flashy feature to an established code-base.
@@ -38,12 +38,12 @@ This is a chance to contribute to an open-source project without having to over-
 > Update: You may find that running the code results in two VMs being returned instead of the full set. I've also included a fake endpoint in the Github repo. You can test against this without going to the public Internet. Run in fakeendpoint with Node.js then point to http://localhost:3000/
 
 
-* Install Node.js (4.x) if you do not already have it. 
+* Install Node.js (4.x) if you do not already have it.
 * Run the test server:
 
 ```
 $ cd fakeendpoint/
-$ node app.js 
+$ node app.js
 Listening on port 3000
 ```
 
@@ -56,6 +56,6 @@ You will now have a close simulation of the RaspberryPI.org website on the day a
 
 #### Dockerfile
 
-If you can add a Dockerfile that will help me make sure anyone else who wants to run your code will have everything they need.
+If you can then please add a `Dockerfile` because this will mean anyone who wants to execute your example can do so with minimal fuss. I'd also like to include them in a CI build.
 
-For an example check out the go_v1 solution's Dockerfile.
+Several Dockerfiles are already included, please look at the go_v1 sample for an example.
