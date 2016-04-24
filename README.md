@@ -38,17 +38,17 @@ This is a chance to contribute to an open-source project without having to over-
 > Update: You may find that running the code results in two VMs being returned instead of the full set. I've also included a fake endpoint in the Github repo. You can test against this without going to the public Internet. Run in fakeendpoint with Node.js then point to http://localhost:3000/
 
 
-* Install Node.js if you do not already have it.
-* Run the test server, called: fakeendpoint
+* Install Node.js (4.x) if you do not already have it. 
+* Run the test server:
 
 ```
-cd fakeendpoint
-npm Install
-
-node app.js
+$ cd fakeendpoint/
+$ node app.js 
+Listening on port 3000
 ```
 
 * Then update your URL to the IP address of your machine or http://localhost:3000
+* If you are using Docker then an environmental variable may be useful for passing different URLs.
 
 You will now have a close simulation of the RaspberryPI.org website on the day as mentioned in the blog post.
 
