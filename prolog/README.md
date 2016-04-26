@@ -15,4 +15,9 @@ By default the code will run against [http://localhost:3000/]. To change this, s
 
     docker run -e "TARGET_URL=https://www.raspberrypi.org/blog/the-little-computer-that-could/" sktb/xservedby_prolog
 
+The count of iterations will default to 25. To change this, set the ITERATIONS environment variable on the docker command line.
+
+    docker run -e "TARGET_URL=https://www.raspberrypi.org/blog/the-little-computer-that-could/" -e "ITERATIONS=50" sktb/xservedby_prolog
+
+
 *Note: Struggling to get this to work against the RPi server*
