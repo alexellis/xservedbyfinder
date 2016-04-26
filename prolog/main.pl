@@ -17,8 +17,7 @@ scanservers(URL, N, Servers) :- N > 0,
                     N1 is N - 1,
                     scanservers(URL, N1, Servers1).
 
-main :- Servers = [],
-        getenv('TARGET_URL', Target_URL),
+main :- getenv('TARGET_URL', Target_URL),
         scanservers(Target_URL, 100, []),
         nl,
         halt.
