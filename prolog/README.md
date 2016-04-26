@@ -15,4 +15,4 @@ By default the code will run against [http://localhost:3000/]. To change this, s
 
     docker run -e "TARGET_URL=https://www.raspberrypi.org/blog/the-little-computer-that-could/" sktb/xservedby_prolog
 
-*Note: Unable to test the above as the RPi server was down at the time of publishing*
+*Note: Struggling to get this to work against the RPi server*
