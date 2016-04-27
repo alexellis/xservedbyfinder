@@ -3,7 +3,6 @@
 getservedby(URL, X_Served_By) :-
         http_open(URL, In,
                   [ method(head),
-                    % proxy('192.168.43.111', 8888),
                     header('x-served-by', X_Served_By)
                   ]),
         close(In).

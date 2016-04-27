@@ -19,5 +19,4 @@ The count of iterations will default to 25. To change this, set the ITERATIONS e
 
     docker run -e "TARGET_URL=https://www.raspberrypi.org/blog/the-little-computer-that-could/" -e "ITERATIONS=50" sktb/xservedby_prolog
 
-
-*Note: Struggling to get this to work against the RPi server*
+*Note: Works fine against the test server but there's some kind of incompatibility between the SWI-Prolog http_open library and the RaspberryPi.Org server. SWI-Prolog throws an exception reading the http headers which I have yet to identify. Testing via an http proxy works fine, so it's possibly a character set or encoding issue.*
