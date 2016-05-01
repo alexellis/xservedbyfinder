@@ -15,15 +15,12 @@ echo -e "${req}" >&3
 proto=https
 while IFS='' read -r line; do
     if [[ ${#line} -gt 12 && ${line:0:12} = 'X-Served-By:' ]]; then
-        echo "http"
         proto=http
-        key=$(expr match "$line" 'X-Served-By: \(.\+\)')
+        key=${line:13}
         key="${key//[[:space:]]/ }"
         dict[$key]=1
     fi
 done <&3
-
-echo "..."
 
 if [ $proto = 'http' ];then
     echo "http"
@@ -34,7 +31,7 @@ if [ $proto = 'http' ];then
             echo $line
             # TODO: trim start instead since we know it starts with X-Served...
             if [[ ${#line} -gt 12 && ${line:0:12} = 'X-Served-By:' ]]; then
-                key=$(expr match "$line" 'X-Served-By: \(.\+\)')
+                key=${line:13}
                 key="${key//[[:space:]]/ }"
                 # TODO: save file as name instead. overwrites if existing. slow?
                 dict[$key]=1
@@ -49,13 +46,14 @@ else
     while IFS='' read -r line; do
         # TODO: trim start instead since we know it starts with X-Served...
         if [[ ${#line} -gt 12 && ${line:0:12} = 'X-Served-By:' ]]; then
-            key=$(expr match "$line" 'X-Served-By: \(.\+\)')
-            key="${key//[[:space:]]/ }"
+            key=${line:13}
+            #key="${key//[[:space:]]/ }"
             # TODO: save file as name instead. overwrites if existing. slow?
             dict[$key]=1
             continue
         fi
-    done < <((for i in {0..10};do echo -e "${req}\r\n";done;echo -e "${close}")|openssl s_client -ign_eof -connect ${host}:443 -CAfile /etc/ssl/certs/ca-certificates.crt 2> /dev/null)
+    done < <((for i in {0..10};do echo -e "${req}\r\n";done;echo -e "${close}") \
+        |openssl s_client -ign_eof -connect ${host}:443 -CAfile /etc/ssl/certs/ca-certificates.crt 2> /dev/null)
 fi
 
 for K in "${!dict[@]}"; do
