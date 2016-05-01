@@ -24,12 +24,10 @@ done <&3
 
 if [ $proto = 'http' ];then
     echo "http"
-    for i in {0..10}; do
+    for i in {0..100}; do
         exec 3<>/dev/tcp/${host}/${port}
         echo -e "${req}" >&3
         while IFS='' read -r line; do
-            echo $line
-            # TODO: trim start instead since we know it starts with X-Served...
             if [[ ${#line} -gt 12 && ${line:0:12} = 'X-Served-By:' ]]; then
                 key=${line:13}
                 key="${key//[[:space:]]/ }"
@@ -52,7 +50,7 @@ else
             dict[$key]=1
             continue
         fi
-    done < <((for i in {0..10};do echo -e "${req}\r\n";done;echo -e "${close}") \
+    done < <((for i in {0..100};do echo -e "${req}\r\n";done;echo -e "${close}") \
         |openssl s_client -ign_eof -connect ${host}:443 -CAfile /etc/ssl/certs/ca-certificates.crt 2> /dev/null)
 fi
 
