@@ -1,10 +1,10 @@
 # x-served-by finder
 
-*This repository accompanies a blog post*
+*This repository accompanies a blog post, please read it before continuing.*
 
 > [Node.js vs. Bash – Apr First Raspberry PI Challenge](http://blog.alexellis.io/april-1st-node-js-vs-bash/)
 
-The task: Reveal all the web-server nodes hidden behind a load-balancer by checking for the `X-Served-By` header.
+The challenge: Reveal all the web-server nodes hidden behind a load-balancer by checking for the `X-Served-By` header.
 
 ### Open invitation
 
@@ -14,6 +14,8 @@ You will find a few solutions in Node.js, Bash and Go. This is an open invitatio
 * Push up your changes into a new folder with a brief README.md file
 * Ideally push a Dockerfile so that we can test the changes easily and include them in an automated build.
 * Raise a pull request (PR) and I will merge it.
+* Update the *Examples so far* section of the main README.md file.
+* Update the CONTRIBUTORS.md file with your Github username and fork.
 
 This is a chance to contribute to an open-source project without having to over-commit your time or worry about pushing a flashy feature to an established code-base.
 
@@ -38,6 +40,14 @@ This is a chance to contribute to an open-source project without having to over-
 
 > Update: You may find that running the code results in two VMs being returned instead of the full set. I've also included a fake endpoint in the Github repo. You can test against this without going to the public Internet. Run in fakeendpoint with Node.js then point to http://localhost:3000/
 
+If you are using Docker then you can make use of a pre-built image:
+
+```
+$ docker pull alexellis2/xservedbyfinder-endpoint
+$ docker run -d -p 3000:3000 alexellis2/xservedbyfinder-endpoint
+```
+
+Without Docker:
 
 * Install Node.js (4.x) if you do not already have it.
 * Run the test server:
@@ -55,8 +65,12 @@ You will now have a close simulation of the RaspberryPI.org website on the day a
 
 > [Node.js vs. Bash – Apr First Raspberry PI Challenge](http://blog.alexellis.io/april-1st-node-js-vs-bash/)
 
-#### Dockerfile
+#### Extra points
 
-If you can then please add a `Dockerfile` because this will mean anyone who wants to execute your example can do so with minimal fuss. I'd also like to include them in a CI build.
+* Passing or configuring the URL by environmental variable.
 
-Several Dockerfiles are already included, please look at the go_v1 sample for an example.
+* Adding a Dockerfile
+
+You can extra kudos for adding a `Dockerfile`. This means anyone who wants to run your example can do so with zero fuss. I'd also like to include them in a CI build at a later date.
+
+Several Dockerfiles are already included, please look through the examples if you need an example.
