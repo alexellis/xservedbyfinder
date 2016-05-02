@@ -19,7 +19,12 @@ You will find a few solutions in Node.js, Bash and Go. This is an open invitatio
 
 This is a chance to contribute to an open-source project without having to over-commit your time or worry about pushing a flashy feature to an established code-base.
 
-### Examples so far:
+### Related:
+
+> For a practical tutorial and progressive set of labs from an official [Docker Captain](http://www.alexellis.io) try my
+[Hands-on Docker Tutorial](http://blog.alexellis.io/handsondocker/)
+
+### Solutions so far:
 
 * [/node_v1](node_v1)
 * [/node_v2](node_v2)
@@ -36,11 +41,11 @@ This is a chance to contribute to an open-source project without having to over-
 
 ### Tips for contributing
 
-#### Using a fake server, instead of RaspberryPI.org
+#### Use a fake server, instead of RaspberryPI.org
 
-> Update: You may find that running the code results in two VMs being returned instead of the full set. I've also included a fake endpoint in the Github repo. You can test against this without going to the public Internet. Run in fakeendpoint with Node.js then point to http://localhost:3000/
+> Update: You may find that running the code against RaspberryPI.org results in only two VMs being returned instead of the full set. I've also included a fake endpoint in the Github repo. You can test against this without going to the public Internet.
 
-If you are using Docker then you can make use of a pre-built image:
+If you are using Docker then you can make use of a pre-built image directly from the Docker Hub [xservedbyfinder-endpoint](https://hub.docker.com/r/alexellis2/xservedbyfinder-endpoint/):
 
 ```
 $ docker pull alexellis2/xservedbyfinder-endpoint
