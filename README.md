@@ -40,6 +40,8 @@ This is a chance to contribute to an open-source project without having to over-
 * [/prolog_v1](prolog_v1)
 * [/rust_v1](rust_v1)
 
+> [List of Contributors](https://github.com/alexellis/xservedbyfinder/blob/master/CONTRIBUTORS.md)
+
 ### Tips for contributing
 
 #### Use a fake server, instead of RaspberryPI.org
