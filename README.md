@@ -38,6 +38,7 @@ This is a chance to contribute to an open-source project without having to over-
 * [/make_v1](make_v1)
 * [/ruby_v1](ruby_v1)
 * [/prolog_v1](prolog_v1)
+* [/rust_v1](rust_v1)
 
 ### Tips for contributing
 
