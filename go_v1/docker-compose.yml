@@ -1,0 +1,9 @@
+version: "2.0"
+services:
+  finder:
+    build: ./
+    environment:
+      - URL=http://endpoint:3000/
+  endpoint:
+    image:
+      alexellis2/xservedbyfinder-endpoint
