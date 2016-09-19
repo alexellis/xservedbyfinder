@@ -1,6 +1,7 @@
 FROM alpine
 
-RUN apk update && apk add curl git bzr 'go=1.5.3-r0' && rm -rf /var/cache/apk/*
+RUN apk update && \
+    apk add go && rm -rf /var/cache/apk/*
 
 ENV GOROOT /usr/lib/go
 ENV GOPATH /gopath
