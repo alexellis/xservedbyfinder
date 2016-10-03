@@ -1,3 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'rspec'
+gem 'httparty'
+gem 'rake'
+gem 'colorize'
+
+group :development do
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'rb-readline'
+  gem 'rspec'
+  gem 'guard-rspec', require: false
+  gem 'terminal-notifier-guard'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'faker'
+end
+
