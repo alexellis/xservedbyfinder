@@ -1,4 +1,6 @@
-FROM 2.3.1-alpine
+FROM ruby:2.3.1-alpine
+
+RUN apk add --update build-base libffi-dev ruby-dev
 
 RUN mkdir -p /usr/src/who
 WORKDIR /usr/src/who
@@ -6,8 +8,9 @@ WORKDIR /usr/src/who
 COPY Gemfile /usr/src/who
 COPY Gemfile.lock /usr/src/who
 
-RUN gem install bundler
+RUN gem install bundler && bundle install
 
-COPY . /usr/src/who
+COPY . ./
 
+ENTRYPOINT ["bundle", "exec"]
 CMD ["tail -f /dev/null"]
