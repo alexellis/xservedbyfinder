@@ -1,0 +1,19 @@
+require 'rake'
+require 'colorize'
+require './lib/who'
+
+namespace :who do
+  desc 'Find out what pi served you the site'
+  task :served, :url, :times do |t, args|
+    if args[:times].nil?
+      number_of_times = 1
+    else
+      number_of_times = args[:times].to_i
+    end
+
+    number_of_times.times do |i|
+      @who = Who.new(args[:url])
+      puts "#{i + 1}: ".blue + 'This page was served by ' + "#{@who.served}".yellow
+    end
+  end
+end

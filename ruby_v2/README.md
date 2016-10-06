@@ -1,0 +1,23 @@
+
+## Usage
+
+* single run: rake who:served[https://www.raspberrypi.org/blog/the-little-computer-that-could/]
+* multiple run run: rake who:served[https://www.raspberrypi.org/blog/the-little-computer-that-could/, 5]
+
+
+* build container: ` docker build -t ruby-xserved . `
+* running the tasks on the container ` docker run -it ruby-xserved "rake who:served[https://www.raspberrypi.org/blog/the-little-computer-that-could/, 5]`
+
+![](https://github.com/orieken/xservedbyfinder/blob/rieken_ruby/ruby_v2/images/rake_task_output.png)
+
+
+
+* if using rvm just install 2.3.1 ` rvm install ruby-2.3.1 `
+* install bundler: ` gem install bundler `
+* install the bundle: ` bundle install `
+
+# Testing
+
+* single run: ` rspec spec `
+* or in the docker container: ` docker run -it ruby-xserved "rspec spec" `
+* continuous testing run guard: ` bundle exec guard `
