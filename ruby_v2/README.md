@@ -5,7 +5,8 @@
 * multiple run run: rake who:served[https://www.raspberrypi.org/blog/the-little-computer-that-could/, 5]
 
 
-* running the tasks on the container ` rake who:served[https://www.raspberrypi.org/blog/the-little-computer-that-could/,3] `
+* build container: ` docker build -t ruby-xserved . `
+* running the tasks on the container ` docker run -it ruby-xserved "rake who:served[https://www.raspberrypi.org/blog/the-little-computer-that-could/, 5]`
 
 ![](https://github.com/orieken/xservedbyfinder/blob/rieken_ruby/ruby_v2/images/rake_task_output.png)
 
