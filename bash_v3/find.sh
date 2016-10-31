@@ -4,7 +4,7 @@ port=${2:-80}
 
 if [ ${BASH_VERSINFO[0]} -lt 4 ]; then
     echo "Running docker container with bash version >= 4 ..."
-    docker run -ti --rm=true -v ${PWD}:/usr/src/find ko1nksm/bash:4.3 /usr/src/find/find.sh
+    docker run -ti --rm=true -v ${PWD}:/usr/src/find ko1nksm/bash:4.3 /usr/src/find/find.sh $host $port
     exit
 fi
 
